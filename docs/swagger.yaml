@@ -1,0 +1,505 @@
+definitions:
+  api.CreateAccountRequest:
+    properties:
+      account_balance:
+        description: Initial account balance
+        type: number
+      account_type:
+        description: Type of the account
+        type: string
+      create_pin:
+        type: integer
+      user_name:
+        description: User's name
+        type: string
+    type: object
+  api.DepositWithdrawRequest:
+    properties:
+      account_id:
+        type: integer
+      amount:
+        type: number
+      pin:
+        type: integer
+    type: object
+  api.TransferRequest:
+    properties:
+      amount:
+        type: number
+      pin:
+        type: integer
+      reciever_id:
+        type: integer
+      sender_id:
+        type: integer
+    type: object
+  api.UpdateAccountRequest:
+    properties:
+      account_balance:
+        type: number
+      account_type:
+        type: string
+      user_name:
+        type: string
+    type: object
+  api.UserLoginResponse:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  api.UserResponse:
+    properties:
+      email_id:
+        type: string
+      message:
+        type: string
+      phone_no:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  api.loginRequest:
+    properties:
+      password:
+        type: string
+      user_name:
+        type: string
+    type: object
+  api.registerRequest:
+    properties:
+      country_code:
+        type: string
+      email_id:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      user_name:
+        type: string
+    type: object
+  database.Account:
+    properties:
+      accountBalance:
+        type: number
+      accountID:
+        type: integer
+      accountType:
+        type: string
+      createPin:
+        type: integer
+      createdAt:
+        type: string
+      userID:
+        type: integer
+      userName:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a simple banking API.
+  title: Banking API
+  version: "1.0"
+paths:
+  /accounts:
+    post:
+      consumes:
+      - application/json
+      description: Create a new account for the user
+      parameters:
+      - description: Account details
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.CreateAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/database.Account'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Create an account
+      tags:
+      - Accounts
+  /accounts/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an account by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Delete an account
+      tags:
+      - Accounts
+    get:
+      consumes:
+      - application/json
+      description: Retrieve account details by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/database.Account'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Get account details
+      tags:
+      - Accounts
+    put:
+      consumes:
+      - application/json
+      description: Update account details by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Account data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpdateAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Update an account
+      tags:
+      - Accounts
+  /accounts/{id}/balance:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the balance of a specific account
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: number
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Get account balance
+      tags:
+      - Accounts
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint allows a user to log in by providing a username and
+        password
+      parameters:
+      - description: User login request
+        in: body
+        name: loginRequest
+        required: true
+        schema:
+          $ref: '#/definitions/api.loginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.UserLoginResponse'
+        "400":
+          description: Invalid request
+          schema:
+            type: string
+        "401":
+          description: User not found. Please register first!" // or "Invalid Password
+          schema:
+            type: string
+        "500":
+          description: Failed to generate tokens
+          schema:
+            type: string
+      summary: Login a user
+      tags:
+      - Home Page
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint allows a user to register by providing a username
+        and password
+      parameters:
+      - description: User registration request
+        in: body
+        name: registerRequest
+        required: true
+        schema:
+          $ref: '#/definitions/api.registerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.UserResponse'
+        "400":
+          description: Invalid request
+          schema:
+            type: string
+        "409":
+          description: Username already exists
+          schema:
+            type: string
+      summary: Register a new user
+      tags:
+      - Home Page
+  /transactions/deposit:
+    post:
+      consumes:
+      - application/json
+      description: Deposits a specified amount into the account with the given account
+        ID.
+      parameters:
+      - description: Account ID and deposit amount
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.DepositWithdrawRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deposit successful
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid payload or account does not exist
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Failed to update balance or transaction error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Deposit money into an account
+      tags:
+      - Transactions
+  /transactions/withdraw:
+    post:
+      consumes:
+      - application/json
+      description: Withdraws a specified amount from the account with the given account
+        ID.
+      parameters:
+      - description: Account ID and withdrawal amount
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.DepositWithdrawRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Withdrawal successful
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid payload, insufficient funds, or account does not exist
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Failed to update balance or transaction error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Withdraw money from an account
+      tags:
+      - Transactions
+  /transfer:
+    post:
+      consumes:
+      - application/json
+      description: Transfers a specified amount from the sender's account to the receiver's
+        account.
+      parameters:
+      - description: Sender ID, Receiver ID, and transfer amount
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.TransferRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Transfer successful
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Invalid payload, insufficient funds, or account does not exist
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Transaction commit failed or database error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Transfer money between accounts
+      tags:
+      - Transactions
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
