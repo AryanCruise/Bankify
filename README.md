@@ -31,8 +31,8 @@
 
 <br>**Deployed Application(link)**: http://51.20.98.52/swagger/ <br>
 <br>Working perfectly on localhost:8080<br>
-<br>Facing some issues with the deployed application (Status - working on it)<br>
-
+<br>Facing some issues with the deployed application (Status - working on it)<be>
+<br><br>
 ### API Overview
 
 ![Swagger UI Interface](https://github.com/user-attachments/assets/e6a493d6-2a68-4c9d-aded-bdc7873a430c)
