@@ -29,9 +29,9 @@
 - **API Documentation**: Swagger
 - **Deployment**: AWS (EC2)
 
-**Deployed Application(link)**: http://51.20.98.52/swagger/
-Working perfectly on localhost:8080
-Facing some issues with the deployed application (Status - working on it)
+<br>**Deployed Application(link)**: http://51.20.98.52/swagger/ <br>
+<br>Working perfectly on localhost:8080<br>
+<br>Facing some issues with the deployed application (Status - working on it)<br>
 
 ### API Overview
 
