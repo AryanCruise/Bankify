@@ -34,6 +34,7 @@
 ### Kafka-based Email and SMS notifications
 ![image](https://github.com/user-attachments/assets/669a86c6-d699-46c6-b505-d3517498cfc6)
 *Image: Email notification sent to the user after deposit transactions*
+<img src="![WhatsApp Image 2024-11-15 at 23 47 59_860aacb3](https://github.com/user-attachments/assets/adcbb6cd-b6d0-4619-92ce-96055e7cdfec)" alt="Image description" width="200" height="100">
 
-![WhatsApp Image 2024-11-15 at 23 47 59_860aacb3](https://github.com/user-attachments/assets/adcbb6cd-b6d0-4619-92ce-96055e7cdfec)
+
 *Image: SMS notification sent to the user after deposit transaction*
