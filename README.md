@@ -35,5 +35,7 @@
 ![image](https://github.com/user-attachments/assets/669a86c6-d699-46c6-b505-d3517498cfc6)
 *Image: Email notification sent to the user after deposit transactions*
 
+
+
 ![WhatsApp Image 2024-11-15 at 23 47 59_ff6ea253](https://github.com/user-attachments/assets/47598e84-b82a-46b7-9c0d-7eb5c4ac103e)
 *Image: SMS notification sent to the user after deposit transaction*
