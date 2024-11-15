@@ -13,6 +13,9 @@
 
 - **Authentication**: 
   - Secure JWT-based user authentication to ensure data privacy and security.
+ 
+- **Notification**: 
+  - The producer sends data to the Kafka topic, consumed by email and SMS services to send transaction notifications.
 
 - **Swagger Integration**: 
   - Intuitive UI for exploring and testing APIs.
@@ -24,7 +27,11 @@
 - **Programming Language**: Go (Golang)
 - **Database**: PostgreSQL
 - **API Documentation**: Swagger
-- **Deployment**: Heroku
+- **Deployment**: AWS (EC2)
+
+**Deployed Application(link)**: http://51.20.98.52/swagger/
+Working perfectly on localhost:8080
+Facing some issues with the deployed application (Status - working on it)
 
 ### API Overview
 
@@ -34,8 +41,6 @@
 ### Kafka-based Email and SMS notifications
 ![image](https://github.com/user-attachments/assets/669a86c6-d699-46c6-b505-d3517498cfc6)
 *Image: Email notification sent to the user after deposit transactions*
-
-
 
 ![WhatsApp Image 2024-11-15 at 23 47 59_ff6ea253](https://github.com/user-attachments/assets/47598e84-b82a-46b7-9c0d-7eb5c4ac103e)
 *Image: SMS notification sent to the user after deposit transaction*
