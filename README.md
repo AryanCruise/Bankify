@@ -1,4 +1,4 @@
-# Bankify - Banking Microservices API
+# Bankify - Banking Services API
 
 ### Description
 **Bankify** is a RESTful banking API microservice application that provides essential banking functionalities such as **account management**, **money transfers**, **notifications**, and **authentication**. It is designed for ease of interaction and is accessible through a user-friendly **Swagger UI**.
