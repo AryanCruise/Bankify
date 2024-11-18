@@ -25,6 +25,7 @@
 
 ### Technologies Used
 - **Programming Language**: Go (Golang)
+- **Asynchronous messaging**: Kafka
 - **Database**: PostgreSQL
 - **API Documentation**: Swagger
 - **Deployment**: AWS (EC2)
